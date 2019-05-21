@@ -7,11 +7,6 @@ use Illuminate\Http\Request;
 
 class CompanyController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
     public function __construct()
     {
         $this->middleware('auth');
@@ -20,100 +15,70 @@ class CompanyController extends Controller
     public function index()
     {
         $companies = Company::orderBy('id', 'desc')->paginate(10);
-        return view('pages.companies.companies')->with('companies', $companies);
+        return view('pages.companies.index')->with('companies', $companies);
     }
 
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
     public function create()
     {
         return view('pages.companies.create');
     }
 
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request $request
-     * @return \Illuminate\Http\Response
-     */
-
     public function store(Request $request)
     {
         $this->validate($request, [
             'name' => 'required',
-            'image' => 'image|nullable|max:1999'
+            'logo' => 'nullable|image|mimes:jpeg, png, jpg|max:2048|dimensions:min_width=300,min_height=200',
         ]);
         $company = new Company();
         if($request->hasFile('logo')){
-            $filenameToStore=upload_file($request);
+            $filenameToStore=$this->upload_file($request);
         }
         else {
-            $filenameToStore="noimage.jpg";
+            $filenameToStore="no_image.png";
         }
         $company->name = $request->input('name');
         $company->website = $request->input('website');
+        $company->email = $request->input('email');
         $company->logo = $filenameToStore;
         $company->save();
         return redirect('/companies')->with('success', 'New company was succesfully created!');
     }
 
-    /**
-     * Display the specified resource.
-     *
-     * @param  \App\Company $company
-     * @return \Illuminate\Http\Response
-     */
     public function show($id)
     {
-        //
+        $company = Company::find($id);
+        if(!empty($company))
+            return view('pages.companies.company')->with('company', $company);
+        else return view('pages.403')->with('error_msg', 'Company with that ID does not exist.');
     }
 
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  \App\Company $company
-     * @return \Illuminate\Http\Response
-     */
     public function edit($id)
     {
         $company = Company::find($id);
-        return view('pages.companies.edit')->with('company', $company);
+        if(!empty($company))
+            return view('pages.companies.edit')->with('company', $company);
+        else return view('pages.403')->with('error_msg', 'Company with that ID does not exist.');
     }
 
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request $request
-     * @param  \App\Company $company
-     * @return \Illuminate\Http\Response
-     */
     public function update(Request $request, $id)
     {
         $this->validate($request, [
             'name' => 'required',
-            'image' => 'image|nullable|max:1999'
+            'logo' => 'nullable|image|mimes:jpeg, png, jpg|max:2048|dimensions:min_width=300,min_height=200',
         ]);
         $company = Company::find($id);
         if($request->hasFile('logo')){
-            $filenameToStore=upload_file($request);
+            $filenameToStore=$this->upload_file($request);
         }
         $company->name = $request->input('name');
         $company->website = $request->input('website');
+        $company->email = $request->input('email');
         if(isset($filenameToStore))
             $company->logo = $filenameToStore;
         $company->save();
         return redirect('/companies')->with('success', 'Comapny was succesfully updated!');
     }
 
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  \App\Company $company
-     * @return \Illuminate\Http\Response
-     */
     public function destroy($id)
     {
         $company = Company::find($id);

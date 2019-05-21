@@ -20,6 +20,7 @@ Route::resource('companies', 'CompanyController', [
         'index' => 'companies',
         'create' => 'companies.create',
         'edit' => 'companies.edit',
+        'show' => 'companies.show',
     ]]);
 Route::resource('employees', 'EmployeeController', [
     'names' => [

@@ -14,6 +14,10 @@
                 {{Form::text('website', '', ['class'=>'form-control', 'placeholder'=>'Website of company'])}}
             </div>
             <div class="form-group">
+                {{Form::label('email', 'E-mail')}}
+                {{Form::text('email', '', ['class'=>'form-control', 'placeholder'=>'Email of company'])}}
+            </div>
+            <div class="form-group">
                 {{Form::label('logo', 'Logo')}}
                 {{Form::file('logo')}}
             </div>

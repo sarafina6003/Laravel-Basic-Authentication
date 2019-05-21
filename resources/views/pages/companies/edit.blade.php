@@ -14,6 +14,10 @@
                 {{Form::text('website', $company->website, ['class'=>'form-control', 'placeholder'=>'Website of company'])}}
             </div>
             <div class="form-group">
+                {{Form::label('email', 'E-mail:')}}
+                {{Form::text('email', $company->email, ['class'=>'form-control', 'placeholder'=>'E-mail of company'])}}
+            </div>
+            <div class="form-group">
                 {{Form::label('logo', 'Logo')}}
                 <img style="height:40px" src="{{asset('storage/companies_logo/'.$company->logo)}}">
                 {{Form::file('logo')}}
