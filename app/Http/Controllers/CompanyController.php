@@ -46,7 +46,7 @@ class CompanyController extends Controller
 
     public function show($id)
     {
-        $company = Company::find($id);
+        $company = Company::with('employees')->find($id);
         if(!empty($company))
             return view('pages.companies.company')->with('company', $company);
         else return view('pages.403')->with('error_msg', 'Company with that ID does not exist.');
@@ -76,14 +76,14 @@ class CompanyController extends Controller
         if(isset($filenameToStore))
             $company->logo = $filenameToStore;
         $company->save();
-        return redirect('/companies')->with('success', 'Comapny was succesfully updated!');
+        return redirect('/companies')->with('success', 'Company was succesfully updated!');
     }
 
     public function destroy($id)
     {
         $company = Company::find($id);
         $company->delete();
-        return redirect('/companies')->with('success', 'Comapny was succesfully deleted!');
+        return redirect('/companies')->with('success', 'Company was succesfully deleted!');
     }
 
     public function upload_file($request){

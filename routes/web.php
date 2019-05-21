@@ -26,5 +26,7 @@ Route::resource('employees', 'EmployeeController', [
     'names' => [
         'index' => 'employees',
         'create' => 'employees.create',
+        'edit' => 'employees.edit',
+        'show' => 'employees.show',
     ]]);
 Auth::routes();
