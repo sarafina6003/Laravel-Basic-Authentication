@@ -15,6 +15,11 @@ Route::get('/', 'PagesController@index');
 Route::get('/403', 'PagesController@unavailable');
 Route::get('/dashboard', 'DashboardController@index')->name('dashboard');
 
+Route::get('locale/{locale}', function ($locale) {
+    Session::put('locale', $locale);
+    return redirect()->back();
+});
+
 Route::resource('companies', 'CompanyController', [
     'names' => [
         'index' => 'companies',

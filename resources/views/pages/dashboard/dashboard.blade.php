@@ -1,13 +1,13 @@
 @extends('layouts.master')
 
 @section('header')
-    Dashboard
+    @lang('dashboard.dashboard_name')
 @endsection
 
 @section('description')
-    This is the main page of system.
+    @lang('dashboard.dashboard_description')
 @endsection
 
 @section('content')
-    Hello, <b>{{ Auth::user()->name }}</b>! This is a dashboard of your account! You can create companies and employees.
+    @lang('dashboard.hello'), <b>{{ Auth::user()->name }}</b>! @lang('dashboard.longer_description')
 @endsection

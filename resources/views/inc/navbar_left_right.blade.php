@@ -2,6 +2,10 @@
 <nav class="navbar navbar-static-top" role="navigation">
     <!-- Sidebar toggle button-->
     <a href="#" data-toggle="push-menu" role="button"></a>
+    <div>
+        <a href="{{url('locale/en')}}"><img src="{{asset('storage/flags/en.png')}}" style="height:20px;"></a>
+        <a href="{{url('locale/lt')}}"><img src="{{asset('storage/flags/lt.png')}}" style="height:20px;"></a>
+    </div>
     <!-- Navbar Right Menu -->
     <div class="navbar-custom-menu">
         <ul class="nav navbar-nav">
