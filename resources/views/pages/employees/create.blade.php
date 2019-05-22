@@ -1,9 +1,14 @@
-@extends('layouts.app')
+@extends('layouts.master')
+
+@section('header')
+    Create new employee
+@endsection
+
+@section('description')
+    Here you can create new employee!
+@endsection
 
 @section('content')
-    <div class="card card-default box-shadow">
-        <div class="card-header">Create new employee</div>
-        <div class="card-body">
             {!! Form::open(['action'=>'EmployeeController@store', 'method'=>'POST']) !!}
             <div class="form-group">
                 {{Form::label('first_name', '*First name')}}
@@ -27,6 +32,4 @@
             </div>
             {{Form::submit('Submit', ['class'=>'btn btn-block btn-primary'])}}
             {!! Form::close() !!}
-        </div>
-    </div>
 @endsection

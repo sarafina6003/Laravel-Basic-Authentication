@@ -1,8 +1,14 @@
-@extends('layouts.app')
+@extends('layouts.master')
+
+@section('header')
+    Edit employee
+@endsection
+
+@section('description')
+    Here you can edit your created employee!
+@endsection
 
 @section('content')
-    <div class="card card-default box-shadow">
-        <div class="card-header">Edit employee</div>
         <div class="card-body">
             {!! Form::open(['action'=>['EmployeeController@update', $employee->id], 'method'=>'POST']) !!}
             <div class="form-group">
@@ -28,6 +34,4 @@
             {{Form::hidden('_method', 'PUT')}}
             {{Form::submit('Submit', ['class'=>'btn btn-block btn-primary'])}}
             {!! Form::close() !!}
-        </div>
-    </div>
 @endsection

@@ -1,10 +1,11 @@
-@extends('layouts.app')
+@extends('layouts.master')
+
+@section('header')
+    Company profile
+@endsection
 
 @section('content')
-    <div class="card card-default box-shadow">
-        <div class="card-header">Company profile</div>
-        <div class="card-body">
-            <table class="" style="width:100%">
+            <table class="table-bordered table-primary" style="width:100%">
                 <tr>
                     <td rowspan="2" align="center"><img src="{{asset('storage/companies_logo/'.$company->logo)}}"
                                                         style="max-height:100px;"></td>
@@ -24,6 +25,4 @@
                 <a href="{{route('employees.show', ['id' => $employee['id']])}}"
                    target="_blank">{{ $employee['first_name'] }} {{ $employee['last_name'] }}</a> <br>
             @endforeach
-        </div>
-    </div>
 @endsection

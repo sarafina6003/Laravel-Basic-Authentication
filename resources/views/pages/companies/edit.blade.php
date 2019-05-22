@@ -1,9 +1,14 @@
-@extends('layouts.app')
+@extends('layouts.master')
+
+@section('header')
+    Edit company
+@endsection
+
+@section('description')
+    Here you can edit your created company!
+@endsection
 
 @section('content')
-    <div class="card card-default box-shadow">
-        <div class="card-header">Edit company</div>
-        <div class="card-body">
             {!! Form::open(['action'=>['CompanyController@update', $company->id], 'method'=>'POST', 'enctype'=>'multipart/form-data']) !!}
             <div class="form-group">
                 {{Form::label('name', 'Name')}}
@@ -25,6 +30,4 @@
             {{Form::hidden('_method', 'PUT')}}
             {{Form::submit('Submit', ['class'=>'btn btn-block btn-primary'])}}
             {!! Form::close() !!}
-        </div>
-    </div>
 @endsection

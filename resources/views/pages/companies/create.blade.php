@@ -1,9 +1,14 @@
-@extends('layouts.app')
+@extends('layouts.master')
+
+@section('header')
+    Create new company
+@endsection
+
+@section('description')
+    Here you can create new company!
+@endsection
 
 @section('content')
-    <div class="card card-default box-shadow">
-        <div class="card-header">Create new company</div>
-        <div class="card-body">
             {!! Form::open(['action'=>'CompanyController@store', 'method'=>'POST', 'enctype'=>'multipart/form-data']) !!}
             <div class="form-group">
                 {{Form::label('name', '*Name')}}
@@ -23,6 +28,4 @@
             </div>
             {{Form::submit('Submit', ['class'=>'btn btn-block btn-primary'])}}
             {!! Form::close() !!}
-        </div>
-    </div>
 @endsection

@@ -1,10 +1,13 @@
-@extends('layouts.app')
+@extends('layouts.master')
+
+@section('header')
+    Dashboard
+@endsection
+
+@section('description')
+    This is the main page of system.
+@endsection
 
 @section('content')
-            <div class="card card-default box-shadow">
-                <div class="card-header">Dashboard</div>
-                <div class="card-body">
-                    Hello, <b>{{ Auth::user()->name }}</b>! This is a dashboard of your account!
-                </div>
-            </div>
+    Hello, <b>{{ Auth::user()->name }}</b>! This is a dashboard of your account! You can create companies and employees.
 @endsection

@@ -6,4 +6,3 @@
     @else <h1>Įvyko klaida. Šio puslapio pasiekti negalite.</h1>
     @endif
 @endsection
-
