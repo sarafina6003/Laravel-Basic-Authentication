@@ -16,5 +16,5 @@
 <li>Use Datatables.net library to show table – with our without server-side rendering</li>
 <li>Use more complicated front-end theme like AdminLTE ✔</li>
 <li>Email notification: send email whenever new company is entered (use Mailgun or Mailtrap)</li>
-<li>Make the project multi-language (using resources/lang folder)</li>
+<li>Make the project multi-language (using resources/lang folder) ✔</li>
 <li>Basic testing with phpunit (I know some would argue it should be the basics, but I disagree)</li>
