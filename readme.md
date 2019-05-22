@@ -12,7 +12,7 @@
 <li>Use Laravel’s pagination for showing Companies/Employees list, 10 entries per page ✔</li>
 <li>Use Laravel make:auth as default Bootstrap-based design theme, but remove ability to register ✔</li>
 
-<b>Extra Task for “Advanced” Juniors:</b>
+<br><b>Extra Task for “Advanced” Juniors:</b>
 <li>Use Datatables.net library to show table – with our without server-side rendering</li>
 <li>Use more complicated front-end theme like AdminLTE ✔</li>
 <li>Email notification: send email whenever new company is entered (use Mailgun or Mailtrap)</li>
