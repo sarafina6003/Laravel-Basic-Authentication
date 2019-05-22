@@ -1,4 +1,5 @@
-<p>## Junior Application  – Adminpanel to manage companies<p>
+<h1>## Junior Application  – Adminpanel to manage companies</h1>
+<p>Completed tasks marked as ✔</p>
     <b>Basically, project to manage companies and their employees. Mini-CRM. ✔</b>
 <li>Basic Laravel Auth: ability to log in as administrator ✔</li>
 <li>Use database seeds to create first user with email admin@admin.com and password “password” ✔</li>
