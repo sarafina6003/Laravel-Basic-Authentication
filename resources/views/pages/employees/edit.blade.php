@@ -9,7 +9,6 @@
 @endsection
 
 @section('content')
-        <div class="card-body">
             {!! Form::open(['action'=>['EmployeeController@update', $employee->id], 'method'=>'POST']) !!}
             <div class="form-group">
                 {{Form::label('first_name', '*First name')}}
