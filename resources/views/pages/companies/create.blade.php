@@ -10,6 +10,7 @@
 
 @section('content')
             {!! Form::open(['action'=>'CompanyController@store', 'method'=>'POST', 'enctype'=>'multipart/form-data']) !!}
+            
             <div class="form-group">
                 {{Form::label('name', '*Name')}}
                 {{Form::text('name', '', ['class'=>'form-control', 'placeholder'=>'Company name'])}}

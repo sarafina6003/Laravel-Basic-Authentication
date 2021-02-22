@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Company;
+use App\Employee;
 use Illuminate\Http\Request;
 
 class CompanyController extends Controller
@@ -27,15 +28,20 @@ class CompanyController extends Controller
     {
         $this->validate($request, [
             'name' => 'required',
-            'logo' => 'nullable|image|mimes:jpeg, png, jpg|max:2048|dimensions:min_width=300,min_height=200',
+            // 'logo' => 'accept=".jpg, .jpeg, .png"',
+           // 'logo' => 'nullable|image|mimes:jpeg, png, jpg|max:2048|dimensions:min_width=300,min_height=200',
+            'logo' => 'nullable | mimes:jpeg,png,jpg|max:2048|dimensions:min_width=300,min_height=200',
         ]);
+
         $company = new Company();
         if($request->hasFile('logo')){
             $filenameToStore=$this->upload_file($request);
+            //$request->logo->store('logos');
         }
         else {
-            $filenameToStore="no_image.png";
+            $filenameToStore="No Logo";
         }
+
         $company->name = $request->input('name');
         $company->website = $request->input('website');
         $company->email = $request->input('email');
@@ -64,7 +70,7 @@ class CompanyController extends Controller
     {
         $this->validate($request, [
             'name' => 'required',
-            'logo' => 'nullable|image|mimes:jpeg, png, jpg|max:2048|dimensions:min_width=300,min_height=200',
+            'logo' => 'nullable | mimes:jpeg,png,jpg|max:2048|dimensions:min_width=300,min_height=200',
         ]);
         $company = Company::find($id);
         if($request->hasFile('logo')){
@@ -79,11 +85,18 @@ class CompanyController extends Controller
         return redirect('/companies')->with('success', 'Company was succesfully updated!');
     }
 
+   
+
     public function destroy($id)
     {
-        $company = Company::find($id);
+        //$company = Company::find($id);        
+        $company = Company::with('employees')->find($id);
+        //$company->delete();
+        $company->employees()->delete();
         $company->delete();
         return redirect('/companies')->with('success', 'Company was succesfully deleted!');
+
+        // return parent::delete();
     }
 
     public function upload_file($request){

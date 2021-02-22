@@ -28,7 +28,7 @@
             <!-- mini logo for sidebar mini 50x50 pixels -->
             <span class="logo-mini"><b>j</b>APP</span>
             <!-- logo for regular state and mobile devices -->
-            <span class="logo-lg"><b>Junior</b>APP</span>
+            <span class="logo-lg"><b>Serah's </b>APP</span>
         </a>
         @include('inc.navbar_left_right')
     </header>
@@ -60,7 +60,7 @@
     <!-- Main Footer -->
     <footer class="main-footer">
         <!-- Default to the left -->
-        <strong>Copyright &copy; 2019 <a href="#">JuniorAPP</a></strong>
+        <strong>Copyright &copy; 2021 <a href="#">Serah's APP</a></strong>
     </footer>
 </div>
 <!-- ./wrapper -->
